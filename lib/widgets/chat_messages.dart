@@ -16,7 +16,9 @@ class ChatMessages extends StatelessWidget {
             .snapshots(),
         builder: (ctx, chatSnapshots) {
           if (chatSnapshots.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
           if (!chatSnapshots.hasData || chatSnapshots.data!.docs.isEmpty) {
             return const Center(
@@ -28,7 +30,7 @@ class ChatMessages extends StatelessWidget {
 
           return ListView.builder(
             reverse: true,
-            padding:const EdgeInsets.only(left: 40),
+            padding: const EdgeInsets.only(left: 5, right: 5),
             itemCount: enteredMessages.length,
             itemBuilder: (context, index) {
               if (index + 1 < enteredMessages.length &&
